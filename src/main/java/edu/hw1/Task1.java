@@ -4,9 +4,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Task1 {
+
     private Task1() {
 
     }
+
     @SuppressWarnings("MagicNumber")
     public static long seconds(String time) {
         String rightForm = "^\\d{2,}:\\d{2}$";
