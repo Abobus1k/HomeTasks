@@ -8,7 +8,7 @@ public class Task6 {
 
     @SuppressWarnings("MagicNumber")
     public static int countK(int num) {
-        return kaprekar(num,0);
+        return kaprekar(num, 0);
     }
 
     @SuppressWarnings("MagicNumber")
@@ -24,7 +24,7 @@ public class Task6 {
         Arrays.sort(descendingChars);
 
         for (int i = 0; i < ascendingChars.length; i++) {
-            ascendingChars[i] = descendingChars[ascendingChars.length -i - 1];
+            ascendingChars[i] = descendingChars[ascendingChars.length - i - 1];
         }
 
         String ascendingNum = new String(ascendingChars);
@@ -39,6 +39,6 @@ public class Task6 {
             res *= 10;
         }
 
-        return kaprekar(res,count+1);
+        return kaprekar(res, count + 1);
     }
 }

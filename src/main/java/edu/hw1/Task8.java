@@ -16,22 +16,23 @@ public class Task8 {
         return true;
     }
 
+    @SuppressWarnings("MagicValue")
     public static boolean isCapture(int[][] arr, int i, int j) {
-        int[] xAxis = {2,2,1,1,-2,-2,-1,-1};
-        int[] yAxis = {1,-1,2,-2,1,-1,-2,2};
+        int[] xAxis = {2, 2, 1, 1, -2, -2, -1, -1};
+        int[] yAxis = {1, -1, 2, -2, 1, -1, -2, 2};
 
         for (int k = 0; k < 8; k++) {
             int x = i + xAxis[k];
             int y = j + yAxis[k];
 
-            if (!OutOfRange(arr,x,y) && arr[x][y] == 1) {
+            if (!outOfRange(arr, x, y) && arr[x][y] == 1) {
                 return true;
             }
         }
         return false;
     }
 
-    public static boolean OutOfRange(int[][] arr, int i, int j) {
+    public static boolean outOfRange(int[][] arr, int i, int j) {
         return i < 0 || i > arr.length - 1 || j < 0 || j > arr[0].length - 1;
     }
 }

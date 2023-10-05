@@ -2,7 +2,6 @@ package edu.hw1;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.Queue;
 
 public class Task7 {
     private Task7() {
