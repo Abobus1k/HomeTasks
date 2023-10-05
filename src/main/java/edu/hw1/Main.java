@@ -12,6 +12,6 @@ public final class Main {
     }
 
     public static void main(String[] args) {
-        System.out.println(Task1.seconds("01:60"));
+
     }
 }

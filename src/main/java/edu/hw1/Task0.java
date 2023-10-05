@@ -7,6 +7,7 @@ public class Task0 {
     private Task0() {
 
     }
+
     private final static Logger LOGGER = LogManager.getLogger();
 
     public static void helloWorld() {
