@@ -26,7 +26,7 @@ public class Task4 {
         int i = 0;
 
         while (i + 1 < len) {
-            sb.append(brokenString.charAt(i+1));
+            sb.append(brokenString.charAt(i + 1));
             sb.append(brokenString.charAt(i));
             i++;
             i++;

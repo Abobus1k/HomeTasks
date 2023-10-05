@@ -10,6 +10,7 @@ public class Task5 {
         return stringNum.equals(new String(reversed));
     }
 
+    @SuppressWarnings("MagicNumber")
     public static boolean isPalindromDescendant(int num) {
         if (num < 10) {
             return false;
