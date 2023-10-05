@@ -16,7 +16,7 @@ public class Task8 {
         return true;
     }
 
-    @SuppressWarnings("MagicValue")
+    @SuppressWarnings("MagicNumber")
     public static boolean isCapture(int[][] arr, int i, int j) {
         int[] xAxis = {2, 2, 1, 1, -2, -2, -1, -1};
         int[] yAxis = {1, -1, 2, -2, 1, -1, -2, 2};
