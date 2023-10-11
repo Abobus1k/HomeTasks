@@ -3,11 +3,11 @@ package edu.project1;
 import java.util.Scanner;
 
 
-public final class Game {
+public final class Main {
 
     private static final int ATTEMPTS = 5;
 
-    private Game() {
+    private Main() {
 
     }
 
