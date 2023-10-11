@@ -18,7 +18,7 @@ public class HangmanWord {
         this.word = word.toCharArray();
         fillMap();
         guessWord = new char[this.word.length];
-        Arrays.fill(guessWord,'*');
+        Arrays.fill(guessWord, '*');
         closedLetters = this.word.length;
     }
 

@@ -13,6 +13,7 @@ public class Dictionary {
         words = new ArrayList<>();
         random = new Random();
     }
+
     public void addWord(String word) {
         words.add(word);
     }
