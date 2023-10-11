@@ -1,27 +1,141 @@
 package edu.project1;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Random;
+import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public final class Main {
-    private final static Logger LOGGER = LogManager.getLogger();
 
     private Main() {
+
     }
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        LOGGER.info("Hello and welcome!");
+        Dictionary dictionary = new Dictionary();
+        dictionary.addWord("apple");
+        dictionary.addWord("orange");
+        dictionary.addWord("watermelon");
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 0; i <= 2; i++) {
+        Scanner scanner = new Scanner(System.in);
+        Game game = new Game(dictionary.getWord());
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            LOGGER.info("i = {}", i);
+        int attempts = 5;
+
+        while (attempts > 0 && !game.isGuessed()) {
+            LOGGER.info("Guess the word: {}",game.getGuessedWord());
+
+
+            LOGGER.info("Attempts left: {}",attempts);
+            LOGGER.info("Enter a letter or type 'quit' to give up: ");
+            String input = scanner.nextLine();
+
+            if (input.equalsIgnoreCase("quit")) {
+                LOGGER.info("You gave up. The word was: {}",game.getWord());
+                break;
+            }
+
+            if (input.length() != 1 || !Character.isLetter(input.charAt(0))) {
+                LOGGER.info("Please enter a single letter.");
+            } else {
+                char letter = input.charAt(0);
+
+                if (game.guessLetter(letter)) {
+                    LOGGER.info("Hit!");
+                } else {
+                    LOGGER.info("Miss(.");
+                    attempts--;
+                }
+            }
         }
+
+        if (game.isGuessed()) {
+            LOGGER.info("Congratulations! You guessed the word: {}",game.getGuessedWord());
+        } else if (attempts == 0) {
+            LOGGER.info("You ran out of attempts. The word was: {}",game.getWord());
+        }
+
+        scanner.close();
     }
 }
+
+class Game {
+    private final char[] word;
+    private Map<Character,List<Integer>> map;
+
+    private final char[] guessWord;
+
+    private int closedLetters;
+
+    public Game(String word) {
+        this.word = word.toCharArray();
+        fillMap();
+        guessWord = new char[this.word.length];
+        Arrays.fill(guessWord,'*');
+        closedLetters = this.word.length;
+    }
+
+    public boolean guessLetter(char letter) {
+        if (!map.containsKey(letter)) {
+            return false;
+        }
+        var currentList = map.get(letter);
+        for (Integer index : currentList) {
+            guessWord[index] = letter;
+            closedLetters--;
+        }
+        return true;
+    }
+
+    public final void fillMap() {
+        map = new HashMap<>();
+        for (int i = 0; i < word.length; i++) {
+            char letter = word[i];
+            map.computeIfAbsent(letter, key -> new ArrayList<>()).add(i);
+        }
+    }
+
+    public String getGuessedWord() {
+        return new String(guessWord);
+    }
+
+    public boolean isGuessed() {
+        return closedLetters == 0;
+    }
+
+    public String getWord() {
+        return new String(word);
+    }
+
+}
+
+
+class Dictionary {
+    private final List<String> words;
+    public final Random random;
+
+    public Dictionary() {
+        words = new ArrayList<>();
+        random = new Random();
+    }
+    public void addWord(String word) {
+        words.add(word);
+    }
+
+    public String getWord() {
+        if (words.isEmpty()) {
+            throw new NoSuchElementException("No words in the dictionary.");
+        }
+        return words.get(random.nextInt(words.size()));
+    }
+}
+
+
