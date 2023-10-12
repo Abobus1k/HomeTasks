@@ -23,7 +23,7 @@ public final class PopularCommandExecutor {
                     throw new ConnectionException("Failed to execute command");
                 }
             } catch (Exception e) {
-                throw new ConnectionException("Failed to execute command");
+                throw new ConnectionException("Wrong execution");
             }
         }
     }

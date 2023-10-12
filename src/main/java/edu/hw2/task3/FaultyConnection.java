@@ -2,7 +2,7 @@ package edu.hw2.task3;
 
 import java.util.Random;
 
-public class FaultyConnection implements Connection{
+public class FaultyConnection implements Connection {
     private final Random random = new Random();
 
     @Override
