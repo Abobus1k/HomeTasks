@@ -4,7 +4,7 @@ public class Task5 {
     private Task5() {
     }
 
-    public static boolean isPalindrom(int num) {
+    private static boolean isPalindrom(int num) {
         String stringNum = String.valueOf(num);
         StringBuilder reversed = new StringBuilder(stringNum).reverse();
         return stringNum.equals(new String(reversed));
@@ -43,8 +43,7 @@ public class Task5 {
             for (int j = 0; j < newDigit.length(); j++) {
                 sb.append(newDigit.charAt(j));
             }
-            i++;
-            i++;
+            i += 2;
         }
 
         if (!hasEvenLength) {
@@ -53,6 +52,6 @@ public class Task5 {
 
         // Глубина рекурсии будет достаточно мала, так как
         // количество вызовов ограничено количеством разрядов числа
-        return isPalindromDescendant(Integer.parseInt(new String(sb)));
+        return isPalindromDescendant(Integer.parseInt(sb.toString()));
     }
 }

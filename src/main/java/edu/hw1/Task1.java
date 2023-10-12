@@ -27,7 +27,7 @@ public class Task1 {
         long countOfSeconds = Long.parseLong(splitTime[1]);
 
         if (countOfSeconds < 0 || countOfSeconds >= 60) {
-            correct = false;
+            return -1;
         }
 
         return correct ? minutesToSeconds * 60 + countOfSeconds : -1;

@@ -1,10 +1,10 @@
-package edu.hw1;
+package edu.hw1.task8;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class Task8Test {
+class Task8Test {
     @Test
     @DisplayName("Первый пример из ТЗ")
     void testFirstExample() {

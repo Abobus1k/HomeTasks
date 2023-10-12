@@ -3,53 +3,28 @@ package edu.hw1;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import java.util.stream.Stream;
 
 public class Task1Test {
-    @Test
-    @DisplayName("First example from technical specifications")
-    void testFirstExample() {
-        Assertions.assertEquals(60,Task1.seconds("01:00"));
+    public static Stream<Arguments> provideTimeData() {
+        return Stream.of(
+            Arguments.of("01:00", 60),
+            Arguments.of("13:56", 836),
+            Arguments.of("10:60", -1),
+            Arguments.of("100:00", 6000),
+            Arguments.of("00:00", 0),
+            Arguments.of("10:61", -1),
+            Arguments.of("10:101", -1),
+            Arguments.of("010:00", 600)
+        );
     }
 
-    @Test
-    @DisplayName("Second example from technical specifications")
-    void testSecondExample() {
-        Assertions.assertEquals(836,Task1.seconds("13:56"));
-    }
-
-    @Test
-    @DisplayName("Third example from technical specifications")
-    void testThirdExample() {
-        Assertions.assertEquals(-1,Task1.seconds("10:60"));
-    }
-
-    @Test
-    @DisplayName("Проверка работоспособности когда минут больше 100")
-    void testLotMinutes() {
-        Assertions.assertEquals(6000,Task1.seconds("100:00"));
-    }
-
-    @Test
-    @DisplayName("Проверка нулего времени")
-    void testZeroTime() {
-        Assertions.assertEquals(0,Task1.seconds("00:00"));
-    }
-
-    @Test
-    @DisplayName("Проверка с количеством секунд больше 60")
-    void testLotSeconds() {
-        Assertions.assertEquals(-1,Task1.seconds("10:61"));
-    }
-
-    @Test
-    @DisplayName("Проверка с количеством секунд больше 100")
-    void testToMuchSeconds() {
-        Assertions.assertEquals(-1,Task1.seconds("10:101"));
-    }
-
-    @Test
-    @DisplayName("Проверка с количеством минут заданном с ведущими нулями")
-    void testMinutesFormat() {
-        Assertions.assertEquals(600,Task1.seconds("010:00"));
+    @ParameterizedTest
+    @MethodSource("provideTimeData")
+    void testTime(String inputTime, int expectedSeconds) {
+        Assertions.assertEquals(expectedSeconds, Task1.seconds(inputTime));
     }
 }

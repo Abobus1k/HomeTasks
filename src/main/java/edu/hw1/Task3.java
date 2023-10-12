@@ -23,11 +23,11 @@ public class Task3 {
         return false;
     }
 
-    public static int findMin(int[] arr) {
+    private static int findMin(int[] arr) {
         return Arrays.stream(arr).min().getAsInt();
     }
 
-    public static int findMax(int[] arr) {
+    private static int findMax(int[] arr) {
         return Arrays.stream(arr).max().getAsInt();
     }
 }

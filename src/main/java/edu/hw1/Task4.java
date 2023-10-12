@@ -36,6 +36,6 @@ public class Task4 {
             sb.append(brokenString.charAt(len));
         }
 
-        return new String(sb);
+        return sb.toString();
     }
 }

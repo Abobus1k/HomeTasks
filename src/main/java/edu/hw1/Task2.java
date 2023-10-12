@@ -8,16 +8,14 @@ public class Task2 {
 
     @SuppressWarnings("MagicNumber")
     public static int countOfDigits(int num) {
-        if (num == 0) {
-            return 1;
-        }
-        int tmp = num;
-
+        int tmp = Math.abs(num);
         int res = 0;
-        while (tmp != 0) {
+
+        do {
             tmp /= 10;
             res++;
-        }
+        } while (tmp != 0);
+
         return res;
     }
 }
