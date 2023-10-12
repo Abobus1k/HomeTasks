@@ -34,6 +34,7 @@ public class Task8 {
         return point.x() < 0 || point.x() > arr.length - 1 || point.y() < 0 || point.y() > arr[0].length - 1;
     }
 
+    @SuppressWarnings("MagicNumber")
     public static Point[] initializeMoves() {
         return new Point[] {
             new Point(2, 1),
