@@ -2,36 +2,20 @@ package edu.hw2.task2;
 
 public class Square extends Rectangle {
 
-    private boolean widthWasChanged = false;
-    private boolean heightWasChanged = false;
+    private int side;
 
-    @Override
-    public Rectangle setWidth(int width) {
-        if (heightWasChanged) {
-            super.setWidth(width);
-            return this;
-        }
+    public Square() {}
 
-        super.setWidth(width);
-        super.setHeight(width);
+    public Square(int side) {
+        this.side = side;
+    }
 
-        widthWasChanged = !widthWasChanged;
-
-        return this;
+    public Square setSide(int sideSize) {
+        return new Square(sideSize);
     }
 
     @Override
-    public Rectangle setHeight(int height) {
-        if (widthWasChanged) {
-            super.setWidth(height);
-            return this;
-        }
-
-        super.setWidth(height);
-        super.setHeight(height);
-
-        heightWasChanged = !heightWasChanged;
-
-        return this;
+    double area() {
+        return side * side;
     }
 }

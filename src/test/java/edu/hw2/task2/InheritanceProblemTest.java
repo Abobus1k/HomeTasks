@@ -17,28 +17,28 @@ class InheritanceProblemTest {
     @ParameterizedTest
     @MethodSource("rectangles")
     void rectangleArea(Rectangle rect) {
-        rect.setWidth(20);
-        rect.setHeight(10);
+        Rectangle firstChangedRect = rect.setWidth(20);
+        Rectangle finalRect = firstChangedRect.setHeight(10);
 
-        Assertions.assertEquals(200.0, rect.area());
+        Assertions.assertEquals(200.0, finalRect.area());
     }
 
     @Test
     void squareArea() {
         Square square = new Square();
 
-        square.setHeight(50);
+        Square resultSquare = square.setSide(50);
 
-        Assertions.assertEquals(2500, square.area());
+        Assertions.assertEquals(2500, resultSquare.area());
     }
 
     @Test
     void rectangleAfterSquareArea() {
         Square square = new Square();
 
-        square.setHeight(50);
-        square.setWidth(100);
+        Rectangle squareAfterChange = square.setHeight(50);
+        Rectangle resultRect = squareAfterChange.setWidth(100);
 
-        Assertions.assertEquals(5000, square.area());
+        Assertions.assertEquals(5000, resultRect.area());
     }
 }
