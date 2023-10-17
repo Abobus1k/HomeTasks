@@ -9,7 +9,7 @@ public final class Task4Util {
 
     }
 
-    public static String IntegerToRoman(int romanNumber) {
+    public static String integerToRoman(int romanNumber) {
         int currentNumber = romanNumber;
 
         Map<Integer, String> romanMap = filledRomanMap();
