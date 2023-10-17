@@ -11,7 +11,7 @@ public final class Task3Util {
     public static <T> Map<T, Integer> wordLen(List<T> objectsList) {
         Map<T, Integer> map = new HashMap<>();
         for (T obj: objectsList) {
-            map.put(obj, map.getOrDefault(obj,0) + 1);
+            map.put(obj, map.getOrDefault(obj, 0) + 1);
         }
         return map;
     }

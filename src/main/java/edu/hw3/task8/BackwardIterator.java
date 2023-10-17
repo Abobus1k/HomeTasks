@@ -23,7 +23,7 @@ public class BackwardIterator<T> implements Iterator<T> {
     public T next() {
         if (hasNext()) {
             T element = collection.get(index);
-            index --;
+            index--;
             return element;
         }
         throw new NoSuchElementException();

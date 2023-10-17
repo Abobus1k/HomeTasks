@@ -13,8 +13,9 @@ public final class Task2Util {
     public static List<String> clasterize(String text) {
         List<String> cluster = new ArrayList<>();
 
-        for (int i = 0; i < text.length(); i++) {
-            char currentChar = text.charAt(i);
+        int index = 0;
+        while (index < text.length()) {
+            char currentChar = text.charAt(index);
 
             if (currentChar == OPEN_BRACKET) {
                 int openBracketsCount = 1;
@@ -22,25 +23,26 @@ public final class Task2Util {
 
                 currentGroup.append(OPEN_BRACKET);
 
-                while (i+1 < text.length() && openBracketsCount > 0) {
-                    i++;
+                while (index + 1 < text.length() && openBracketsCount > 0) {
+                    index++;
 
-                    currentGroup.append(text.charAt(i));
+                    currentGroup.append(text.charAt(index));
 
-                    if (text.charAt(i) == OPEN_BRACKET) {
+                    if (text.charAt(index) == OPEN_BRACKET) {
                         openBracketsCount++;
                     }
-                    if (text.charAt(i) == CLOSE_BRACKET) {
+                    if (text.charAt(index) == CLOSE_BRACKET) {
                         openBracketsCount--;
                     }
                 }
 
                 cluster.add(currentGroup.toString());
 
-                if (i == text.length() - 1 && openBracketsCount > 0) {
+                if (index == text.length() - 1 && openBracketsCount > 0) {
                     throw new InvalidStringException("Wrong input string");
                 }
             }
+            index++;
         }
         return cluster;
     }

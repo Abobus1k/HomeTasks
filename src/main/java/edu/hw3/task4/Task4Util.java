@@ -9,7 +9,8 @@ public final class Task4Util {
 
     }
 
-    public static String romanToInteger(int romanNumber) {
+    public static String IntegerToRoman(int romanNumber) {
+        int currentNumber = romanNumber;
 
         Map<Integer, String> romanMap = filledRomanMap();
 
@@ -18,14 +19,15 @@ public final class Task4Util {
         StringBuilder result = new StringBuilder();
 
         for (int integer: convertArray) {
-            while (romanNumber >= integer) {
+            while (currentNumber >= integer) {
                 result.append(romanMap.get(integer));
-                romanNumber -= integer;
+                currentNumber -= integer;
             }
         }
         return result.toString();
     }
 
+    @SuppressWarnings("MagicNumber")
     private static Map<Integer, String> filledRomanMap() {
         Map<Integer, String> romanMap = new HashMap<>();
 
@@ -46,7 +48,8 @@ public final class Task4Util {
         return romanMap;
     }
 
+    @SuppressWarnings("MagicNumber")
     private static int[] filledConvertArray() {
-        return new int[] {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5,4, 1};
+        return new int[] {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
     }
 }

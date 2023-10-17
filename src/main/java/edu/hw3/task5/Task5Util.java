@@ -1,8 +1,11 @@
 package edu.hw3.task5;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Task5Util {
+
+    private Task5Util() {}
 
     public static List<Contact> func(List<Contact> contactList, String order) {
         if (contactList == null || contactList.isEmpty()) {

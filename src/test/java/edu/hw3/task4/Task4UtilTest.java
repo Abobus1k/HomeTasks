@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
-import static edu.hw3.task4.Task4Util.romanToInteger;
+import static edu.hw3.task4.Task4Util.IntegerToRoman;
 
 public class Task4UtilTest {
 
@@ -23,7 +23,7 @@ public class Task4UtilTest {
     @ParameterizedTest
     @MethodSource("testData")
     void testConverting(int inputNumber, String expectedRomanNumber) {
-        String resNumber = romanToInteger(inputNumber);
+        String resNumber = IntegerToRoman(inputNumber);
         Assertions.assertEquals(expectedRomanNumber, resNumber);
     }
 }

@@ -14,9 +14,20 @@ public class Stock {
     }
 
     @Override public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
         Stock stock = (Stock) o;
         return Double.compare(price, stock.price) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(price);
     }
 }
