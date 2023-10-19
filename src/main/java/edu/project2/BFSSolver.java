@@ -65,7 +65,7 @@ public class BFSSolver implements MazeSolver {
         List<Point> result = new ArrayList<>();
         SmartPoint current = finishPoint;
         while (current != null) {
-            result.add((Point) current);
+            result.add(current);
             current = (current.getParent());
         }
         return result;
