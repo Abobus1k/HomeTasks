@@ -15,10 +15,10 @@ public class Task5UtilTest {
         return Stream.of(
             Arguments.of(
                 List.of(
-                    new Contact("John", "Locke"),
-                    new Contact("Thomas", "Aquinas"),
-                    new Contact("David", "Hume"),
-                    new Contact("Rene", "Descartes")
+                    "John Locke",
+                    "Thomas Aquinas",
+                    "David Hume",
+                    "Rene Descartes"
                 ),
                 List.of(
                     new Contact("Thomas", "Aquinas"),
@@ -30,9 +30,9 @@ public class Task5UtilTest {
             ),
             Arguments.of(
                 List.of(
-                    new Contact("Carl", "Gauss"),
-                    new Contact("Leonhard", "Euler"),
-                    new Contact("Paul", "Erdos")
+                    "Carl Gauss",
+                    "Leonhard Euler",
+                    "Paul Erdos"
                 ),
                 List.of(
                     new Contact("Carl", "Gauss"),
@@ -45,9 +45,9 @@ public class Task5UtilTest {
             Arguments.of(null, new ArrayList<>(), "DESC"),
             Arguments.of(
                 List.of(
-                    new Contact("Carl"),
-                    new Contact("Leonhard"),
-                    new Contact("Paul")
+                    "Carl",
+                    "Leonhard",
+                    "Paul"
                 ),
                 List.of(
                     new Contact("Carl"),
@@ -58,9 +58,9 @@ public class Task5UtilTest {
             ),
             Arguments.of(
                 List.of(
-                    new Contact("Aaa"),
-                    new Contact("Zzz", "Yyy"),
-                    new Contact("Ivan")
+                    "Aaa",
+                    "Zzz Yyy",
+                    "Ivan"
                 ),
                 List.of(
                     new Contact("Aaa"),
@@ -74,7 +74,7 @@ public class Task5UtilTest {
 
     @ParameterizedTest
     @MethodSource("testData")
-    void testSortingContacnts(List<Contact> inputList, List<Contact> expectedList, String order) {
+    void testSortingContacnts(List<String> inputList, List<Contact> expectedList, String order) {
         List<Contact> sortedList = func(inputList, order);
 
         Assertions.assertEquals(expectedList, sortedList);
