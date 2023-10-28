@@ -1,11 +1,13 @@
-package edu.project2;
+package edu.project2.generators;
 
+import edu.project2.entities.Maze;
+import edu.project2.entities.Point;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import static edu.project2.Maze.EMPTY;
-import static edu.project2.Maze.WALL;
+import static edu.project2.entities.Maze.EMPTY;
+import static edu.project2.entities.Maze.WALL;
 
 public class BroderMazeGenerator implements MazeGenerator {
     private final int width;

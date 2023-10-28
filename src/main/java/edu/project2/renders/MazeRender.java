@@ -1,7 +1,10 @@
-package edu.project2;
+package edu.project2.renders;
+
+import edu.project2.entities.Maze;
+import edu.project2.entities.Point;
 
 import java.util.List;
-import static edu.project2.Maze.PATH;
+import static edu.project2.entities.Maze.PATH;
 
 public final class MazeRender {
 

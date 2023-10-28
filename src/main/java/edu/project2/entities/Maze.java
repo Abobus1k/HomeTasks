@@ -1,4 +1,4 @@
-package edu.project2;
+package edu.project2.entities;
 
 import java.util.Arrays;
 

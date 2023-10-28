@@ -1,4 +1,8 @@
-package edu.project2;
+package edu.project2.solvers;
+
+import edu.project2.entities.Maze;
+import edu.project2.entities.Point;
+import edu.project2.entities.SmartPoint;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

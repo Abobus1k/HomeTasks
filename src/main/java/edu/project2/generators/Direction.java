@@ -1,4 +1,4 @@
-package edu.project2;
+package edu.project2.generators;
 
 public enum Direction {
     UP(0, -2),
