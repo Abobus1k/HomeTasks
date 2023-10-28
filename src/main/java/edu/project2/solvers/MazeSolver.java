@@ -1,7 +1,6 @@
 package edu.project2.solvers;
 
 import edu.project2.entities.Point;
-
 import java.util.List;
 
 public interface MazeSolver {

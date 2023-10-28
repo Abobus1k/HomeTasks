@@ -3,7 +3,6 @@ package edu.project2.solvers;
 import edu.project2.entities.Maze;
 import edu.project2.entities.Point;
 import edu.project2.entities.SmartPoint;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,14 +10,14 @@ import java.util.Queue;
 
 public class BFSSolver implements MazeSolver {
 
+    private static final int[] DX = {-1, 1, 0, 0};
+    private static final int[] DY = {0, 0, -1, 1};
     private final int rows;
     private final int cols;
     private final Queue<SmartPoint> queue;
     private final boolean[][] visited;
     private final Maze maze;
     private SmartPoint finishPoint;
-    private static final int[] DX = {-1, 1, 0, 0};
-    private static final int[] DY = {0, 0, -1, 1};
 
     public BFSSolver(Maze maze) {
         this.maze = maze;
