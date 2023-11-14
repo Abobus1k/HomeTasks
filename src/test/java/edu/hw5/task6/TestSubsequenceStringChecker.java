@@ -27,11 +27,16 @@ public class TestSubsequenceStringChecker {
             Arguments.of(
                 "aaa",
                 "dsakodasdkasogjdskf",
-                false
+                true
             ),
             Arguments.of(
                 "a1",
                 "ba1",
+                true
+            ),
+            Arguments.of(
+                "abc",
+                "qaqbqc",
                 true
             )
         );

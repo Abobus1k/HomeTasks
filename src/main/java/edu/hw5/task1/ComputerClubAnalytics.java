@@ -36,7 +36,7 @@ public class ComputerClubAnalytics {
 
     public static String reinterpretDuration(Duration duration) {
         long hours = duration.toHours();
-        long minutes = duration.minusHours(hours).toMinutes();
+        long minutes = duration.toMinutesPart();
         return hours + "ч " + minutes + "м";
     }
 }

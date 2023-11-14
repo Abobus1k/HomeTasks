@@ -10,7 +10,7 @@ public class FSM {
     }
 
     public static boolean isFirstRule(String input) {
-        String regex = "^[01]{2}0.*$";
+        String regex = "^[01]{2}0[01]*$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(input);
         return matcher.matches();
