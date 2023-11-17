@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class FileClonerTest {
 
-    private static final String TEST_FILE_PATH = "src/test/java/edu/hw6/task2/testFiles/test_file.txt";
+    private static final String TEST_FILE_PATH = "src/test/java/edu/hw6/task2/testFiles/Tinkoff Bank Biggest Secret.txt";
 
     @BeforeEach
     void setUp() {
