@@ -62,7 +62,9 @@ class FileClonerTest {
 
         try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(directoryPath)) {
             for (Path file : directoryStream) {
-                Files.delete(file);
+                if (!file.equals(Paths.get("src/test/java/edu/hw6/task2/testFiles/README.md"))) {
+                    Files.delete(file);
+                }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
