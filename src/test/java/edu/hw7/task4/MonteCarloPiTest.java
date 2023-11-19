@@ -20,6 +20,7 @@ public class MonteCarloPiTest {
         assertTrue(result > 3.14 && result < 3.15);
     }
 
+
     @Test
     void testConcurrency() throws InterruptedException {
         MonteCarloPi monteCarloPi = new MonteCarloPi(10000000);
