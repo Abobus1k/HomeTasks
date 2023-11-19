@@ -43,6 +43,7 @@ class PasswordCrackerTest {
 
         ConcurrentHashMap<String, String> cracked = passwordCracker.getCracked();
 
+
         assertTrue(cracked.containsKey("Name2"));
         assertTrue(cracked.containsKey("Name3"));
         assertTrue(cracked.containsKey("Name4"));
