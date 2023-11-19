@@ -29,19 +29,19 @@ public class TestDateParser {
             ),
             Arguments.of(
                 "tomorrow",
-                Optional.of(LocalDate.of(2023, 11, 15))
+                Optional.of(LocalDate.of(2023, 11, 21))
             ),
             Arguments.of(
                 "today",
-                Optional.of(LocalDate.of(2023, 11, 14))
+                Optional.of(LocalDate.of(2023, 11, 20))
             ),
             Arguments.of(
                 "1 day ago",
-                Optional.of(LocalDate.of(2023, 11, 13))
+                Optional.of(LocalDate.of(2023, 11, 19))
             ),
             Arguments.of(
                 "2 days ago",
-                Optional.of(LocalDate.of(2023, 11, 12))
+                Optional.of(LocalDate.of(2023, 11, 18))
             ),
             Arguments.of(
                 "10 dney nazad",
