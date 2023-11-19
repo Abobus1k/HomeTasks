@@ -53,4 +53,9 @@ public class Client extends Thread {
         int bytesRead = inputStream.read(buffer);
         return new String(buffer, 0, bytesRead);
     }
+
+    public static void main(String[] args) {
+        Client client = new Client();
+        client.start();
+    }
 }

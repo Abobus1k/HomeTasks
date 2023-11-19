@@ -109,4 +109,9 @@ public class Server extends Thread {
             Files.write(logFilePath, logEntry.getBytes(), StandardOpenOption.APPEND, StandardOpenOption.CREATE);
         }
     }
+
+    public static void main(String[] args) {
+        Server server = new Server();
+        server.start();
+    }
 }
