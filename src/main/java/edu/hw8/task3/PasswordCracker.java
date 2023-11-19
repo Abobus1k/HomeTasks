@@ -3,50 +3,27 @@ package edu.hw8.task3;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class PasswordCracker {
     private static final int MAX_PASSWORD_LENGTH = 4;
     private final Map<String, String> passwordDatabase;
-    private static final ConcurrentHashMap<String, String> cracked = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, String> cracked;
     private static final String CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
     public PasswordCracker(Map<String, String> passwordDatabase) {
         this.passwordDatabase = passwordDatabase;
+        this.cracked = new ConcurrentHashMap<>();
     }
 
-    public static void main(String[] args) {
-
-        PasswordCracker passwordCracker = new PasswordCracker(fillPasswordDatabase());
-
-        int numThreads = 6;
-        ExecutorService executorService = Executors.newFixedThreadPool(numThreads);
-
-        long startTime1 = System.currentTimeMillis();
-        passwordCracker.multiThreadedPasswordCrack(executorService, numThreads);
-        executorService.shutdown();
-        long endTime1 = System.currentTimeMillis();
-
-        System.out.println("Multi-threaded execution time: " + (endTime1 - startTime1) + " ms");
-
-        System.out.println(cracked);
-    }
-
-    private static Map<String, String> fillPasswordDatabase() {
-        Map<String, String> ans = new HashMap<>();
-        ans.put("763fb1b0349eb7e8b1a95d27acd87583", "a.v.petrov");
-        ans.put("0745064918b49693cca64d6b6a13d28a", "a.aa.aaa");
-        ans.put("21c2e59531c8710156d34a3c30ac81d5", "b.bb.bbb");
-
-        return ans;
+    public ConcurrentHashMap<String, String> getCracked() {
+        return cracked;
     }
 
     public void multiThreadedPasswordCrack(ExecutorService executorService, int numThreads) {
@@ -56,8 +33,7 @@ public class PasswordCracker {
             Callable<Void> task;
             if (i == numThreads - 1) {
                 task = createPasswordCrackTask(part * i, CHARACTERS.length() - 1);
-            }
-            else {
+            } else {
                 task = createPasswordCrackTask(part * i, part * (i + 1) - 1);
             }
             futures.add(executorService.submit(task));
@@ -65,9 +41,9 @@ public class PasswordCracker {
 
         for (Future<Void> future : futures) {
             try {
-                future.get(); // Ждем завершения всех задач
+                future.get();
             } catch (InterruptedException | ExecutionException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
     }
@@ -90,6 +66,7 @@ public class PasswordCracker {
 
     private Callable<Void> createPasswordCrackTask(int from, int to) {
         return () -> {
+
             ConcurrentPasswordGenerator generator = new ConcurrentPasswordGenerator(MAX_PASSWORD_LENGTH, from, to);
             String nextPassword;
 
@@ -108,6 +85,7 @@ public class PasswordCracker {
         };
     }
 
+    @SuppressWarnings("MagicNumber")
     private static String md5(String input) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
@@ -131,7 +109,7 @@ public class PasswordCracker {
     private static class PasswordGenerator {
         private final int[] indices;
 
-        public PasswordGenerator(int passwordLength) {
+        PasswordGenerator(int passwordLength) {
             indices = new int[passwordLength];
         }
 
@@ -166,7 +144,7 @@ public class PasswordCracker {
         private final int from;
         private final int to;
 
-        public ConcurrentPasswordGenerator(int passwordLength, int from, int to) {
+        ConcurrentPasswordGenerator(int passwordLength, int from, int to) {
             indices = new int[passwordLength];
             this.from = from;
             this.to = to;
@@ -183,6 +161,7 @@ public class PasswordCracker {
             }
 
             incrementIndices();
+
             return password.toString();
         }
 
@@ -191,21 +170,18 @@ public class PasswordCracker {
                 indices[i]++;
 
                 if (indices.length == 1) {
-                    if (indices[i] >= to) {
+                    if (indices[i] > to) {
                         indices[i] = CHARACTERS.length() - 1;
                     } else {
                         break;
                     }
-                }
-
-                else if (i == indices.length - 1) {
-                    if (indices[i] >= to) {
+                } else if (i == indices.length - 1) {
+                    if (indices[i] > to) {
                         indices[i] = from;
                     } else {
                         break;
                     }
-                }
-                else {
+                } else {
                     if (indices[i] == CHARACTERS.length()) {
                         indices[i] = 0;
                     } else {

@@ -16,6 +16,10 @@ public class FixedThreadPool implements ThreadPool {
         this.isShutdown = false;
     }
 
+    public static FixedThreadPool create(int threadsNumber) {
+        return new FixedThreadPool(threadsNumber);
+    }
+
     @Override
     public void start() {
         for (int i = 0; i < threadsNumber; i++) {
@@ -59,7 +63,5 @@ public class FixedThreadPool implements ThreadPool {
         }
     }
 
-    public static FixedThreadPool create(int threadsNumber) {
-        return new FixedThreadPool(threadsNumber);
-    }
+
 }
