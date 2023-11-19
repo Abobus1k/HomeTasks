@@ -28,9 +28,4 @@ public class ParallelIncrementer {
 
         return counter.getValue();
     }
-
-    public static void main(String[] args) {
-        ParallelIncrementer parallelIncrementer = new ParallelIncrementer(10, 10);
-        System.out.println(parallelIncrementer.execute());
-    }
 }
