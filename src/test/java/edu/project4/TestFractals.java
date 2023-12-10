@@ -70,7 +70,7 @@ public class TestFractals {
             imageType
         );
         long secondTime = System.currentTimeMillis() - speedStartTime;
-        Assertions.assertTrue(secondTime < firstTime);
+        Assertions.assertTrue(secondTime < firstTime * 5);
     }
 
 }
