@@ -1,9 +1,9 @@
 package edu.hw3.task7;
 
+import java.util.TreeMap;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import java.util.TreeMap;
 
 public class NullTreeMapComparatorTest {
     @Test

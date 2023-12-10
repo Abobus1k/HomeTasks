@@ -5,11 +5,11 @@ import edu.project2.entities.Point;
 import edu.project2.entities.SmartPoint;
 import edu.project2.solvers.BFSSolver;
 import edu.project2.solvers.BackTrackingSolver;
+import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import java.util.List;
 import static edu.project2.renders.MazeRender.viewMaze;
 import static edu.project2.renders.MazeRender.viewMazeWithPath;
 
