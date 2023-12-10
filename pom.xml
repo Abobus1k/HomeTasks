@@ -95,10 +95,30 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>5.6.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>edu.project3.NginxLogAnalyzer</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -186,7 +206,7 @@
                                         <message>JDK version must be at least ${jdk.version}</message>
                                     </requireJavaVersion>
                                     <requireMavenVersion>
-                                        <version>[${maven.version},)</version>
+                                        <version>[3.6.3,)</version>
                                         <message>Maven version should, at least, be ${maven.version}</message>
                                     </requireMavenVersion>
                                     <banDuplicatePomDependencyVersions/>
