@@ -37,10 +37,7 @@ public class TestFractals {
         variations.add(new Disc());
 
         ImageType imageType = ImageType.PNG;
-        String fileName = String.format(
-            "samples%d_iter%d_symmetry%d_gamma%.2f.%s",
-            SAMPLES, ITERS, SYMMETRY, GAMMA, imageType.name().toLowerCase()
-        );
+        String fileName = "fractal.png";
         Path path = IMAGES.resolve(fileName);
         long startTime = System.currentTimeMillis();
         FractalFlameGenerator.generate(
@@ -68,7 +65,7 @@ public class TestFractals {
             ITERS,
             SYMMETRY,
             GAMMA,
-            1,
+            12,
             path,
             imageType
         );
