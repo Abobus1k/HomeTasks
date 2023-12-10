@@ -65,7 +65,7 @@ public class TestFractals {
             ITERS,
             SYMMETRY,
             GAMMA,
-            12,
+            10,
             path,
             imageType
         );
